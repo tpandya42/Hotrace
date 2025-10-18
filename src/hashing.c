@@ -6,7 +6,7 @@
 /*   By: tpandya <tpandya@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 19:12:05 by tpandya           #+#    #+#             */
-/*   Updated: 2025/10/18 19:12:06 by tpandya          ###   ########.fr       */
+/*   Updated: 2025/10/18 19:37:44 by mmillhof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,12 @@ unsigned long long	hashing(char *str)
 	int					c;
 
 	hash = 5381;
-	while ((c = *str++))
+	c = *str;
+	while (c)
+	{
 		hash = ((hash << 5) + hash) + c;
+		c = *str++;
+	}
 	return (hash);
 }
 

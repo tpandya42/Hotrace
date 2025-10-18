@@ -6,12 +6,11 @@
 /*   By: mmillhof <mmillhof@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 13:06:00 by mmillhof          #+#    #+#             */
-/*   Updated: 2025/10/18 19:29:48 by mmillhof         ###   ########.fr       */
+/*   Updated: 2025/10/18 20:23:28 by mmillhof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
-#include "stdio.h"
 
 int	read_next_buffer(char *buf, int fd)
 {

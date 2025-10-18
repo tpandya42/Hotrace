@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hotrace.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmillhof <mmillhof@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/18 20:22:45 by mmillhof          #+#    #+#             */
+/*   Updated: 2025/10/18 20:25:32 by mmillhof         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HOTRACE_H
-#define HOTRACE_H
+# define HOTRACE_H
 
-#define BUFFER_SIZE 1000
+# define BUFFER_SIZE 1000
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <string.h>
-#include <stdbool.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <errno.h>
+# include <string.h>
+# include <stdbool.h>
 
 typedef struct s_nodes {
-	char	*key;
-	char	*value;
-	int		index;
+	char			*key;
+	char			*value;
+	int				index;
 	struct s_nodes	*next;
 }	t_nodes;
 
@@ -21,27 +33,25 @@ typedef struct s_hashtable {
 	int		size;
 }	t_hashtable;
 
-
 // UTILS
-size_t	ft_strlen(const char *str);
-int		ft_strcmp(char *s1, char *s2);
-void	ft_strcpy(char *dest, const char *src);
-char	*ft_strdup(const char *src);
+size_t				ft_strlen(const char *str);
+int					ft_strcmp(char *s1, char *s2);
+void				ft_strcpy(char *dest, const char *src);
+char				*ft_strdup(const char *src);
 
 // HASHING 
-t_hashtable	*init_hashes(int size);
-unsigned long long hashing(char	*str);
-void	insert_into_table(t_hashtable *ht, char *key, char *value);
-char	*search_for_value(t_hashtable *ht, char *key);
+t_hashtable			*init_hashes(int size);
+unsigned long long	hashing(char *str);
+void				insert_into_table(t_hashtable *ht, char *key, char *value);
+char				*search_for_value(t_hashtable *ht, char *key);
 
 // READING
-int	read_next_buffer(char *buf, int fd);
-int	read_next_line(char *line);
-int	read_key_value(char *key, char *value);
-
+int					read_next_buffer(char *buf, int fd);
+int					read_next_line(char *line);
+int					read_key_value(char *key, char *value);
 
 // CLEANUP
-void	clean_buckets(t_nodes *nodes);
-void	clean_table(t_hashtable *ht);
+void				clean_buckets(t_nodes *nodes);
+void				clean_table(t_hashtable *ht);
 
 #endif
