@@ -13,18 +13,17 @@
 #include "hotrace.h"
 #include "stdio.h"
 
-int main(void)
+int	main(void)
 {
 	t_hashtable	*ht;
 	char		*key;
 	char		*value;
 	char		*result;
 	int			status;
-	
+
 	ht = init_hashes(100003);
 	if (!ht)
 		return (1);
-	
 	key = malloc(10000);
 	value = malloc(10000);
 	if (!key || !value)
@@ -32,7 +31,6 @@ int main(void)
 		clean_table(ht);
 		return (1);
 	}
-
 	while (1)
 	{
 		status = read_key_value(key, value);
@@ -45,29 +43,25 @@ int main(void)
 		}
 		insert_into_table(ht, key, value);
 	}
-
 	while (1)
 	{
 		status = read_next_line(key);
 		if (status < 0)
 			break ;
-
-		if (key[0] == '\n') 
-			continue;
-
+		if (key[0] == '\n')
+			continue ;
 		result = search_for_value(ht, key);
 		if (result)
 		{
-			write (1, result, ft_strlen(result));
-			write (1, "\n", 1);
+			write(1, result, ft_strlen(result));
+			write(1, "\n", 1);
 		}
 		else
 		{
-			write (1, key, ft_strlen(key));
-			write (1, ": Not found.\n", 13);		
+			write(1, key, ft_strlen(key));
+			write(1, ": Not found.\n", 13);
 		}
 	}
-
 	free(key);
 	free(value);
 	clean_table(ht);

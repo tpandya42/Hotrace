@@ -15,9 +15,9 @@
 
 int	read_next_buffer(char *buf, int fd)
 {
-	static char	stash[BUFFER_SIZE + 1];
+	static char			stash[BUFFER_SIZE + 1];
 	static unsigned int	i;
-	int			status;
+	int					status;
 
 	if (!stash[i])
 	{
@@ -35,7 +35,7 @@ int	read_next_buffer(char *buf, int fd)
 
 int	read_next_line(char *line)
 {
-	char 			buf;
+	char			buf;
 	unsigned int	idx;
 	int				status;
 
@@ -61,7 +61,7 @@ int	read_next_line(char *line)
 
 int	read_key_value(char *key, char *value)
 {
-	int		len;
+	int	len;
 
 	len = read_next_line(key);
 	if (len < 0 || key[0] == '\n')

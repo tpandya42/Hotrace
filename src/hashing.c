@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hashing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tpandya <tpandya@student.42berlin.de>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/18 19:12:05 by tpandya           #+#    #+#             */
+/*   Updated: 2025/10/18 19:12:06 by tpandya          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "hotrace.h"
-
-
 
 /* -> Initializing our hast_table
  * -> Allocating it..
@@ -9,7 +19,7 @@
 t_hashtable	*init_hashes(int size)
 {
 	t_hashtable	*ht;
-	int	i;
+	int			i;
 
 	ht = (t_hashtable *)malloc(sizeof(t_hashtable));
 	if (!ht)
@@ -27,18 +37,16 @@ t_hashtable	*init_hashes(int size)
 	return (ht);
 }
 
-
-
 /* DJB2 hashing method....
  * ->Converts Keyword into its hash number
  * ->5381 is magic number.... proven by tests.. Best Efficiency
- * ->We are doing ((hash * 33) + c)      
+ * ->We are doing ((hash * 33) + c)
  * ->We do this to scramble bits well so they are nicely distributed
  */
-unsigned long long hashing(char *str)
+unsigned long long	hashing(char *str)
 {
-	unsigned long long hash;
-	int	c;
+	unsigned long long	hash;
+	int					c;
 
 	hash = 5381;
 	while ((c = *str++))
@@ -50,9 +58,9 @@ unsigned long long hashing(char *str)
  * and storing the KEY and VALUES there.....*/
 void	insert_into_table(t_hashtable *ht, char *key, char *value)
 {
-	unsigned long long hash_value;
-	int	index;
-	t_nodes	*node;
+	unsigned long long	hash_value;
+	int					index;
+	t_nodes				*node;
 
 	hash_value = hashing(key);
 	index = hash_value % ht->size;
@@ -63,7 +71,6 @@ void	insert_into_table(t_hashtable *ht, char *key, char *value)
 	ht->buckets[index] = node;
 }
 
-
 /*
  * -> To search for the key in its bucket....
  * -> Getting the bucket via hash value.....
@@ -71,9 +78,9 @@ void	insert_into_table(t_hashtable *ht, char *key, char *value)
  */
 char	*search_for_value(t_hashtable *ht, char *key)
 {
-	unsigned long long hash_value;
-	int	index;
-	t_nodes	*current;
+	unsigned long long	hash_value;
+	int					index;
+	t_nodes				*current;
 
 	hash_value = hashing(key);
 	index = hash_value % ht->size;
@@ -81,8 +88,8 @@ char	*search_for_value(t_hashtable *ht, char *key)
 	while (current != NULL)
 	{
 		if (ft_strcmp(current->key, key) == 0)
-			return current->value;
+			return (current->value);
 		current = current->next;
 	}
-	return NULL;
+	return (NULL);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tpandya <tpandya@student.42berlin.de>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/18 19:12:16 by tpandya           #+#    #+#             */
+/*   Updated: 2025/10/18 19:12:17 by tpandya          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "hotrace.h"
 
 size_t	ft_strlen(const char *str)
@@ -24,13 +36,13 @@ void	ft_strcpy(char *dest, const char *src)
 {
 	int	i;
 
-	 i = 0;
-	 while (src[i])
-	 {
-		 dest[i] = src[i];
-		 i++;
-	 }
-	 dest[i] = '\0';
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
 }
 
 char	*ft_strdup(const char *src)
