@@ -19,3 +19,27 @@ int	ft_strcmp(char *s1, char *s2)
 	}
 	return (*s1 - *s2);
 }
+
+void	ft_strcpy(char *dest, const char *src)
+{
+	int	i;
+
+	 i = 0;
+	 while (src[i])
+	 {
+		 dest[i] = src[i];
+		 i++;
+	 }
+	 dest[i] = '\0';
+}
+
+char	*ft_strdup(const char *src)
+{
+	char	*ptr;
+
+	ptr = (char *)malloc((ft_strlen(src) + 1) * sizeof(char));
+	if (ptr == NULL)
+		return (NULL);
+	ft_strcpy(ptr, src);
+	return (ptr);
+}

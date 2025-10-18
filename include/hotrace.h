@@ -13,7 +13,26 @@ typedef struct s_nodes {
 	struct s_nodes	*next;
 }	t_nodes;
 
-int	hash[255][255];
+typedef struct s_hashtable {
+	t_nodes **buckets;
+	int	size;
+}	t_hashtable;
+
+
+// UTILS
+size_t ft_strlen(const char *str);
+int	ft_strcmp(char *s1, char *s2);
+void	ft_strcpy(char *dest, const char *src);
+char	*ft_strdup(const char *src);
+
+
+
+// HASHING 
+t_hashtable	*init_hashes(int size);
+unsigned long long hashing(char	*str);
+
+
+
 
 
 #endif
