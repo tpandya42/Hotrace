@@ -6,7 +6,7 @@
 /*   By: mmillhof <mmillhof@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 13:06:00 by mmillhof          #+#    #+#             */
-/*   Updated: 2025/10/18 19:08:42 by mmillhof         ###   ########.fr       */
+/*   Updated: 2025/10/18 19:29:48 by mmillhof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	read_next_buffer(char *buf, int fd)
 			return (-1);
 		if (status == 0)
 			return (0);
-		stash[status + 1] = '\0';
+		stash[status] = '\0';
 		i = 0;
 	}
 	*buf = stash[i++];
@@ -50,7 +50,7 @@ int	read_next_line(char *line)
 			return (status);
 		}
 		if (status == 0)
-			break ;
+			return (-1);
 		line[idx++] = buf;
 	}
 	if (idx > 1)
