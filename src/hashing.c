@@ -55,3 +55,27 @@ void	insert_into_table(t_hashtable *ht, char *key, char *value)
 	node->next = ht->buckets[index];
 	ht->buckets[index] = node;
 }
+
+
+/*
+ * -> To search for the key in its bucket....
+ * -> Getting the bucket via hash value.....
+ * -> Returning value of key... in case of existence
+ */
+char	*search_for_value(t_hashtable *ht, char *key)
+{
+	unsigned long long hash_value;
+	int	index;
+	t_nodes	*current;
+
+	hash_value = hashing(key);
+	index = hash_value % ht->size;
+	current = ht->buckets[index];
+	while (current != NULL)
+	{
+		if (ft_strcmp(current->key, key) == 0)
+			return current->value;
+		current = current->next;
+	}
+	return NULL;
+}
