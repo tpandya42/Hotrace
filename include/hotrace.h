@@ -30,7 +30,7 @@ char	*ft_strdup(const char *src);
 // HASHING 
 t_hashtable	*init_hashes(int size);
 unsigned long long hashing(char	*str);
-
+void	insert_into_table(t_hashtable *ht, char *key, char *value);
 
 
 
