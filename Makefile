@@ -8,6 +8,7 @@ SRC = \
 	   $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/hashing.c \
 	   $(SRC_DIR)/utils.c \
+	   $(SRC_DIR)/utils_01.c \
 	   $(SRC_DIR)/reading.c
 
 OBJDIR = obj

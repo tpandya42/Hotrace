@@ -49,7 +49,7 @@ int	read_next_line(char *line)
 	buf = '\0';
 	while (buf != '\n')
 	{
-		status = read_next_buffer(&buf, 1);
+		status = read_next_buffer(&buf, 0);
 		if (status < 0)
 		{
 			strerror(errno);

@@ -19,8 +19,11 @@ t_hashtable	*init_hashes(int size)
 	if (!ht->buckets)
 		return (free(ht), NULL);
 	i = 0;
-	while (i++ < ht->size)
+	while (i < ht->size)
+	{
 		ht->buckets[i] = NULL;
+		i++;
+	}
 	return (ht);
 }
 
