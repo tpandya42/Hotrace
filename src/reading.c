@@ -6,7 +6,7 @@
 /*   By: mmillhof <mmillhof@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 13:06:00 by mmillhof          #+#    #+#             */
-/*   Updated: 2025/10/18 16:17:25 by mmillhof         ###   ########.fr       */
+/*   Updated: 2025/10/18 17:11:45 by mmillhof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ int	read_key_value(char *key, char *value)
 	int		len;
 
 	len = read_next_line(key);
-	if (len <= 0 || key[0] == '\n')
+	if (len < 0 || key[0] == '\n')
 		return (len);
 	len = read_next_line(value);
-	if (len <= 0 || value[0] == '\n')
-		return (len);
+	if (len < 0 || value[0] == '\n')
+		return (-1);
 	return (0);
 }

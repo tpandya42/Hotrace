@@ -1,32 +1,34 @@
 MAKEFLAGS += --no-print-directory -s
 NAME = hotrace
 CC = cc
-CLAGS = -Wall -Werror -Wextra -Iinclude
+CFLAGS = -Wall -Werror -Wextra -Iinclude
 
-SRC_DIR = src 
+SRC_DIR = src
 SRC = \
-      $(SRC_DIR)/hashing.c \
-      $(SRC_DIR)/main.c \
-      $(SRC_DIR)/utils.c \
-      $(SRC_DIR)/reading.c
+	   $(SRC_DIR)/main.c \
+	   $(SRC_DIR)/hashing.c \
+	   $(SRC_DIR)/utils.c \
+	   $(SRC_DIR)/reading.c
 
-OBJ_DIR = obj 
-OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJDIR = obj
+OBJ = $(addprefix $(OBJDIR)/, $(SRC:$(SRC_DIR)/%.c=%.o))
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@echo "---***BUILD COMPLETE***---"
+
+$(OBJDIR)/%.o: $(SRC_DIR)/%.c | $(OBJDIR)
+	@echo "---***COMPILING***---"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-	@echo "---***BUILD COMPLETE***---"
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c 
-	@mkdir -p $(OBJ_DIR)
-	@echo "---***COMPILING***---"
-	@$(CC) $(CFLAGS) -c $< -o $@
-
 clean:
-	@rm -f $(OBJ_DIR)
-	@echo "---***Cleaned Object File***---"
+	@rm -rf $(OBJDIR)
+	@echo "---***Cleaned Object Files***---"
 
 fclean: clean
 	@rm -f $(NAME)
@@ -34,5 +36,5 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re
 

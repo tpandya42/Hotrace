@@ -38,8 +38,6 @@ int	read_next_buffer(char *buf, int fd);
 int	read_next_line(char *line);
 int	read_key_value(char *key, char *value);
 
-=======
-
 // CLEANUP
 void	clean_buckets(t_nodes *nodes);
 void	clean_table(t_hashtable *ht);

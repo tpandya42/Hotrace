@@ -6,11 +6,12 @@
 /*   By: mmillhof <mmillhof@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 13:41:54 by mmillhof          #+#    #+#             */
-/*   Updated: 2025/10/18 16:23:08 by mmillhof         ###   ########.fr       */
+/*   Updated: 2025/10/18 17:13:24 by mmillhof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
+#include <stdio.h>
 
 int main(void)
 {
@@ -21,14 +22,17 @@ int main(void)
 	key = malloc(10000);
 	value = malloc(10000);
 
-	status = read_key_value(key, value);
-	if (status == 1)
-		write(1, "end\n", 4);
-	else 
+	while (1)
 	{
-		write(1, key, ft_strlen(key));
-		write(1, value, ft_strlen(value));
+		status = read_key_value(key, value);
+		printf("status: %i\n", status);
+		if (status < 0)
+			return (0);
+		if (status == 0 || key[0] == '\n')
+			break ;
 	}
+	write(1, key, ft_strlen(key));
+	write(1, value, ft_strlen(value));
 	free(key);
 	free(value);
 	return (0);
