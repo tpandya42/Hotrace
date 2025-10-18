@@ -9,6 +9,7 @@
 t_hashtable	*init_hashes(int size)
 {
 	t_hashtable	*ht;
+	int	i;
 
 	ht = (t_hashtable *)malloc(sizeof(t_hashtable));
 	if (!ht)
@@ -17,6 +18,9 @@ t_hashtable	*init_hashes(int size)
 	ht->buckets = (t_nodes **)malloc(ht->size * sizeof(t_nodes *));
 	if (!ht->buckets)
 		return (free(ht), NULL);
+	i = 0;
+	while (i++ < ht->size)
+		ht->buckets[i] = NULL;
 	return (ht);
 }
 
