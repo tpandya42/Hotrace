@@ -6,25 +6,19 @@
 /*   By: mmillhof <mmillhof@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 13:06:00 by mmillhof          #+#    #+#             */
-/*   Updated: 2025/10/18 17:11:45 by mmillhof         ###   ########.fr       */
+/*   Updated: 2025/10/18 18:34:33 by mmillhof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
+#include "stdio.h"
 
 int	read_next_buffer(char *buf, int fd)
 {
 	static char	stash[BUFFER_SIZE + 1];
 	static unsigned int	i;
-	static bool	init;
 	int			status;
 
-	if (!init)
-	{
-		stash[0] = '\0';
-		i = 0;
-		init = true;
-	}
 	if (!stash[i])
 	{
 		status = read(fd, stash, BUFFER_SIZE);
@@ -59,6 +53,8 @@ int	read_next_line(char *line)
 			break ;
 		line[idx++] = buf;
 	}
+	if (idx > 1)
+		idx--;
 	line[idx] = '\0';
 	return (idx);
 }

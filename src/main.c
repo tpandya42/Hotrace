@@ -6,11 +6,12 @@
 /*   By: mmillhof <mmillhof@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 13:41:54 by mmillhof          #+#    #+#             */
-/*   Updated: 2025/10/18 17:22:46 by mmillhof         ###   ########.fr       */
+/*   Updated: 2025/10/18 18:35:55 by mmillhof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
+#include "stdio.h"
 
 int main(void)
 {
@@ -35,28 +36,23 @@ int main(void)
 	while (1)
 	{
 		status = read_key_value(key, value);
-		if (status <= 0)
+		if (status < 0)
 			break ;
-
 		if (key[0] == '\n')
 			break ;
-		if (key[ft_strlen(key) - 1] == '\n')
-			key[ft_strlen(key) - 1] = '\0';
-		
 		insert_into_table(ht, key, value);
 	}
 
+	key[0] = '\0';
 	while (1)
 	{
 		status = read_next_line(key);
+//		printf("<<< %s >>>\n", key);
 		if (status <= 0)
 			break ;
 
 		if (key[0] == '\n') 
 			continue;
-
-		if (key[ft_strlen(key) - 1] == '\n')
-			key[ft_strlen(key) - 1] = '\0';
 
 		result = search_for_value(ht, key);
 		if (result)
