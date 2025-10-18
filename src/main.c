@@ -6,7 +6,7 @@
 /*   By: mmillhof <mmillhof@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 13:41:54 by mmillhof          #+#    #+#             */
-/*   Updated: 2025/10/18 18:35:55 by mmillhof         ###   ########.fr       */
+/*   Updated: 2025/10/18 18:59:51 by mmillhof         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,17 @@ int main(void)
 		if (status < 0)
 			break ;
 		if (key[0] == '\n')
+		{
+			printf("newline");
 			break ;
+		}
 		insert_into_table(ht, key, value);
 	}
 
-	key[0] = '\0';
 	while (1)
 	{
 		status = read_next_line(key);
-//		printf("<<< %s >>>\n", key);
-		if (status <= 0)
+		if (status < 0)
 			break ;
 
 		if (key[0] == '\n') 
