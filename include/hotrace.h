@@ -33,6 +33,8 @@ unsigned long long hashing(char	*str);
 void	insert_into_table(t_hashtable *ht, char *key, char *value);
 
 
-
+// CLEANUP
+void	clean_buckets(t_nodes *nodes);
+void	clean_table(t_hashtable *ht);
 
 #endif
